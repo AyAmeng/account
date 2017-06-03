@@ -40,11 +40,9 @@ module.exports = webpackMerge(commonConfig, {
       },
       {
         test: /\.styl$/,
-        use: [
-          {
-            loader: 'style-loader',
-            query: 'sourceMap=true'
-          },
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use:[
           {
             loader: 'css-loader',
             query: 'sourceMap=true'
@@ -57,7 +55,7 @@ module.exports = webpackMerge(commonConfig, {
             loader: 'stylus-loader',
             query: 'sourceMap=true'
           }
-        ]
+          ]})
       },
     ]
   },
@@ -75,9 +73,9 @@ module.exports = webpackMerge(commonConfig, {
       //title: 'Account'
     }),
 
-    // new ExtractTextPlugin({
-    //   filename: '[name].[chunkhash].css',
-    //   allChunks: true
-    // }),
+    new ExtractTextPlugin({
+      filename: '[name].[chunkhash].css',
+      allChunks: true
+    }),
   ]
 })
