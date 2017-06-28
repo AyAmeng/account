@@ -22,7 +22,7 @@ app.use(views(__dirname + '/views', {
 router.get("/", ctx =>  {
   return ctx.render('./index.html')
   .catch(err => {
-    throw(404, 'path error')
+    console.info(err)
   })
 })
 
