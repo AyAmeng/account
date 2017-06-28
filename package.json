@@ -15,6 +15,7 @@
     "koa-nunjucks-promise": "^1.1.1",
     "koa-router": "^7.2.1",
     "koa-static": "^3.0.0",
+    "koa-views": "^6.0.2",
     "koa2": "^2.0.0-alpha.7",
     "morgan": "^1.8.2",
     "pm2": "^2.5.0",
