@@ -1,0 +1,6 @@
+const extend = require('../utils/extend.js')
+const router1 = require('./default.router.js')
+const router2 = require('./router1.js')
+// module.exports.default = require('./default.router.js')
+// module.exports.page = require('./router1.js')
+module.exports = extend(router1, router2)
