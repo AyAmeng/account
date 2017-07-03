@@ -27,7 +27,7 @@
     "webpack-dev-server": "^2.5.0"
   },
   "scripts": {
-    "do": "webpack --config config/webpack-base.config.js --progress --colors --watch --display-error-details",
-    "server": "webpack-dev-server --config config/webpack-base.config.js --watch --progress --colors --display-error-details"
+    "do": "webpack --config tools/webpack.base.config.js --progress --colors --watch",
+    "server": "webpack-dev-server --config tools/webpack.base.config.js --watch --progress --colors"
   }
 }
