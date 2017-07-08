@@ -38,6 +38,27 @@ module.exports = webpackMerge(commonConfig, {
         // 去除样板文件
         exclude: /src\/index.html/
       },
+      {
+        test: /\.styl$/,
+        use: [
+          {
+            loader: 'style-loader',
+            query: 'sourceMap=true'
+          },
+          {
+            loader: 'css-loader',
+            query: 'sourceMap=true'
+          },
+          {
+            loader: 'postcss-loader',
+            query: 'sourceMap=true'
+          },
+          {
+            loader: 'stylus-loader',
+            query: 'sourceMap=true'
+          }
+        ]
+      },
     ]
   },
 

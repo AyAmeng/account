@@ -1,5 +1,5 @@
 import Component from 'vue-class-component'
-import './style.scss'
+import './style.styl'
 
 @Component({
   name: 'app',
