@@ -21,15 +21,14 @@ module.exports = {
   },
   
   entry: {
-    //index: './src/index.html',
-    bundle: './src/entry.js'
+    main: './src/entry.js'
     //vendor: ['vue', 'vue-route'],
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
-    publicPath: '/dist/', //用于生产的
+    //publicPath: '/dist/', //用于生产的
     //filename: 'bundle.js',
-    filename: '[name].js',
+    filename: '../dist/static/[name].[chunkhash].js',
     //filename: 'bundle.js',
     //chunkFilename: '[name].chunk.js',
   },
@@ -38,7 +37,10 @@ module.exports = {
     rules: [
       {
         test: /\.css$/, 
-        use: ['style-loader', 'css-loader']
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader?minimize'
+        }) 
       },
       {
         test: /\.html$/,
@@ -47,6 +49,23 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.BannerPlugin('This file is created by vya')
+    new webpack.BannerPlugin('This file is created by vya'),
+    // new ExtractTextPlugin('[name].css', {allChunks: true}), 
+
+    // 单独打包CSS 参数为
+    new ExtractTextPlugin({
+      filename: '../dist/static/[name].[chunkhash].css',
+      allChunks: true
+    }),
+    new HtmlWebpackPlugin({
+      filename: '../dist/index.html',
+      template: './src/index.html',
+      hash: true,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true
+      }
+    }),
   ]
 }
