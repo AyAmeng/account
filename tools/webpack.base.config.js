@@ -7,7 +7,6 @@ const HappyPack = require('happypack')
 const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin')
 
 const paths = require('./paths')
-
 const NODE_ENV = process.env.NODE_ENV
 const DEBUG = NODE_ENV === 'development'
 const DISTRIBUTION = process.env.DISTRIBUTION
@@ -16,15 +15,34 @@ const CONFIGURATION = process.env.CONFIG
 
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 module.exports = {
+  resolve: {
+    alias: {}
+  },
+  entry: './src/index.html',
+  output: {
+    path: __dirname,
+    publicPath: '',
+    filename: 'bundle.js'
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.css$/, 
+        loader: 'style-loader!css-loader'
+      }
+    ]
+  },
+  plugins: [
+    new webpack.BannerPlugin('This file is created by vya')
+  ]
+}
   /**
    * ### resolve:
    * webpack的alias的作用，通过key，value的形式，将模块名和路径对应起来.
    * 不管是相对路径还是绝对路径.因此，在模块引用的时候，
    * 利用require引用的模块可以不用通过相对路径或者绝对路径的方式，而是直接通过require('模块名')的方式进行引用。
    */
-  resolve: {
-    alias: {}
-  },
+
   /**
    * ### entry:
    * 入口文件，通过key，value的方式，确定入口文件的文件名及其对应的文件路径。
@@ -43,8 +61,6 @@ module.exports = {
     对index.js文件中所有通过require引入的js文件打包成indexA.js和common.js文件，
     至于common.js文件是怎样生成的，需要做些什么配置，后文会有所介绍。
    */
-  
-  entry: './src/entry.js',
 
   /**
    * ### output: => {path: './build/public'}
@@ -76,10 +92,7 @@ module.exports = {
    * 如上面配置项所示，index.js文件生成的路径为 build/public/javascripts/indexA.js
 }
    */
-  output: {
-    path: __dirname,
-    filename: 'bundle.js'
-  },
+  
   /**
    * 在webpack中，loader是webpack中最为重要的组成，loader可以对不同的文件使用不同的loader进行处理，且模块可以链式使用。
    * loader的作用是什么呢？我们在前端开发中，我们可能以不在直接使用css进行开发而使用Sass、Less这种预编译器进行处理，
@@ -89,14 +102,7 @@ module.exports = {
    * loader可以链式调用，对于less文件，我们可以通过less-loader对less文件转义成css文件，
    * 然后再使用css-loader对其生成的css文件在进行进一步的处理。
    */
-  module: {
-    loaders: [
-      {
-        test: /\.css$/, 
-        loader: 'style-loader!css-loader'
-      }
-    ]
-  },
+  
   /**
    * plugins: 
    * plugins是webpack中和loader同等地位的组成部分，
@@ -123,7 +129,3 @@ module.exports = {
    * 在webpack中，对于模块的引入，我们可以使用require的方式进行引入，
    * 也可以通过该插件全局引入好像jQuery和$这样的模块名，而不用在文件内部使用require进行引入。
    */
-  plugins: [
-    new webpack.BannerPlugin('This file is created by vya')
-  ]
-}

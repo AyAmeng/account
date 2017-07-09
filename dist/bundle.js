@@ -1,4 +1,4 @@
-/*! This file is created by zhaoda */
+/*! This file is created by vya */
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -58,7 +58,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/dist/";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 0);
@@ -112,7 +112,7 @@ exports = module.exports = __webpack_require__(3)(undefined);
 
 
 // module
-exports.push([module.i, "body {\n  color: red;\n  background: yellow;\n}", ""]);
+exports.push([module.i, "body {\n  color: white;\n  background: #808080;\n}", ""]);
 
 // exports
 
@@ -657,7 +657,7 @@ module.exports = function (css) {
 /* 6 */
 /***/ (function(module, exports) {
 
-module.exports = 'It works from module.js 2222wwww男男女女wwwsswwwqeqweqwsssssswwww.'
+module.exports = 'It works from module.js .'
 
 /***/ })
 /******/ ]);
