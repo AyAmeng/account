@@ -61,11 +61,11 @@ module.exports = {
       filename: '../dist/index.html',
       template: './src/index.html',
       hash: true,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true
-      }
+      // minify: {
+      //   removeComments: true,
+      //   collapseWhitespace: true,
+      //   removeAttributeQuotes: true
+      // }
     }),
   ]
 }
