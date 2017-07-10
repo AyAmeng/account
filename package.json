@@ -29,10 +29,11 @@
     "style-loader": "^0.18.2",
     "typescript": "^2.3.4",
     "webpack": "3.0.0",
-    "webpack-dev-server": "^2.5.0"
+    "webpack-dev-server": "^2.5.0",
+    "webpack-merge": "^4.1.0"
   },
   "scripts": {
     "pro": "webpack --config tools/webpack.pro.js --watch --progress --colors",
-    "dev": "webpack-dev-server --config tools/webpack.dev.js --watch --progress --colors --content-base ./dev --inline"
+    "dev": "webpack-dev-server --config tools/webpack.dev.js --watch --progress --colors --inline"
   }
 }

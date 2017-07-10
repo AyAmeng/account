@@ -6,11 +6,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HappyPack = require('happypack')
 const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin')
 
-const paths = require('./paths')
-const NODE_ENV = process.env.NODE_ENV
-const DEBUG = NODE_ENV === 'development'
+// const paths = require('./paths')
+// const NODE_ENV = process.env.NODE_ENV
+// const DEBUG = NODE_ENV === 'development'
 
-console.info(__dirname)
 module.exports = {
   resolve: {
     extensions: ['.js', '.ts', '.vue', '.styl', '.css'],

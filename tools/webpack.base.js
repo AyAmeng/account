@@ -14,26 +14,65 @@ const PLATFORM = process.env.PLATFORM
 const CONFIGURATION = process.env.CONFIG
 
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
+
 module.exports = {
   resolve: {
-    alias: {}
+    extensions: ['.js', '.ts', '.vue', '.styl', '.css'],
+    modules: [path.resolve('./node_modules')],
+    alias: {
+      'src': path.resolve('../src'),
+    }
   },
-  entry: './src/index.html',
+  
+  entry: {
+    main: './src/entry.js'
+    //vendor: ['vue', 'vue-route'],
+  },
   output: {
-    path: __dirname,
-    publicPath: '',
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, '../dist'),
+    //publicPath: '/dist/', //用于生产的
+    //filename: 'bundle.js',
+    filename: '../dist/static/[name].[chunkhash].js',
+    //filename: 'bundle.js',
+    //chunkFilename: '[name].chunk.js',
   },
   module: {
-    loaders: [
+    // loaders
+    rules: [
       {
         test: /\.css$/, 
-        loader: 'style-loader!css-loader'
-      }
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader?minimize'
+        }) 
+      },
+      {
+        test: /\.html$/,
+        use: ['html-loader']
+      },
     ]
   },
   plugins: [
-    new webpack.BannerPlugin('This file is created by vya')
+    new webpack.BannerPlugin('This file is created by vya'),
+    // new ExtractTextPlugin('[name].css', {allChunks: true}), 
+
+    // 单独打包CSS 参数为 new ExtractTextPlugin({filename: string | pathString, allChunks: boolean, }）
+    new ExtractTextPlugin({
+      filename: '../dist/static/[name].[chunkhash].css',
+      allChunks: true
+    }),
+
+    // 打包指定的html文件到指定文件夹  new HtmlWebpackPlugin({filename: pathString , template: pathString, hash: boolean, minify: {}})
+    new HtmlWebpackPlugin({
+      filename: '../dist/index.html',
+      template: './src/index.html',
+      hash: true,
+      // minify: {
+      //   removeComments: true,
+      //   collapseWhitespace: true,
+      //   removeAttributeQuotes: true
+      // }
+    }),
   ]
 }
   /**

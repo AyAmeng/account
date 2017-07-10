@@ -5,24 +5,25 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HappyPack = require('happypack')
 const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin')
+const commonConfig = require('./webpack.base.js')
+const webpackMerge = require('webpack-merge')
 
-const paths = require('./paths')
-const NODE_ENV = process.env.NODE_ENV
-const DEBUG = NODE_ENV === 'development'
-
-console.info(__dirname)
-module.exports = {
-  resolve: {
-    extensions: ['.js', '.ts', '.vue', '.styl', '.css'],
-    modules: [path.resolve('./node_modules')],
-    alias: {
-      'src': path.resolve('../src'),
-    }
+module.exports = webpackMerge(commonConfig, {
+  //devtool: 'cheap-module-source-map',
+  
+  devServer: {
+    stats: 'errors-only',
+    headers: {
+      'Access-Control-Allow-Origin': 'http://localhost',
+      'Access-Control-Allow-Credentials': 'true'
+    },
+    port: 8081,
+    // hot: true // 需要的时候请手动开启， 包括下面的 Plugin
   },
   
   entry: {
-    index: './src/index.html',
-    bundle: './src/index.js'
+    //index: './src/index.html',
+    bundle: './src/entry.js'
     //vendor: ['vue', 'vue-route'],
   },
   output: {
@@ -46,7 +47,17 @@ module.exports = {
       },
     ]
   },
+
+  watchOptions: {
+    aggregateTimeout: 300
+  },
   plugins: [
-    new webpack.BannerPlugin('This file is created by vya')
+    new webpack.BannerPlugin('This file is created by vya'),// top content
+    new webpack.NoEmitOnErrorsPlugin(), //no error
+
+    // home page
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    })
   ]
-}
+})
