@@ -1,6 +1,6 @@
 'use strict'
 
-var webpack = require('webpack')
+const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -24,10 +24,10 @@ module.exports = webpackMerge(commonConfig, {
   module: {
     // loaders
     rules: [
-      // {
-      //   test: /\.css$/, 
-      //   use: ExtractTextPlugin.extract({ fallback:  'style-loader', use: 'css-loader'})
-      // },
+      {
+        test: /\.css$/, 
+        use: ExtractTextPlugin.extract({ fallback:  'style-loader', use: 'css-loader'})
+      },
       {
         test: /\.html$/,
         use: ["html-loader"],
@@ -48,6 +48,11 @@ module.exports = webpackMerge(commonConfig, {
     new HtmlWebpackPlugin({
       template: './src/index.html'
       //title: 'Account'
-    })
+    }),
+
+    new ExtractTextPlugin({
+      filename: '[name].[chunkhash].css',
+      allChunks: true
+    }),
   ]
 })

@@ -42,13 +42,6 @@ module.exports = {
     // loaders
     rules: [
       {
-        test: /\.css$/, 
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader?minimize'
-        }) 
-      },
-      {
         test: /\.html$/,
         use: ['html-loader']
       },
@@ -56,10 +49,10 @@ module.exports = {
   },
   plugins: [
     //css
-    new ExtractTextPlugin({
-      filename: '[name].[chunkhash].css',
-      allChunks: true
-    }),
+    // new ExtractTextPlugin({
+    //   filename: '[name].[chunkhash].css',
+    //   allChunks: true
+    // }),
     //new webpack.BannerPlugin('This file is created by vya'),
     // new ExtractTextPlugin('[name].css', {allChunks: true}), 
 
