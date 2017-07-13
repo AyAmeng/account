@@ -27,7 +27,7 @@ module.exports = {
   },
   
   entry: {
-    main: './src/entry.js'
+    main: './src/index.js'
     //vendor: ['vue', 'vue-route'],
   },
   output: {
@@ -44,6 +44,11 @@ module.exports = {
       {
         test: /\.html$/,
         use: ['html-loader']
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        include: [resolve('src'), resolve('test')]
       },
     ]
   },
