@@ -55,6 +55,11 @@ module.exports = {
     ]
   },
   plugins: [
+    //css
+    new ExtractTextPlugin({
+      filename: '[name].[chunkhash].css',
+      allChunks: true
+    }),
     //new webpack.BannerPlugin('This file is created by vya'),
     // new ExtractTextPlugin('[name].css', {allChunks: true}), 
 

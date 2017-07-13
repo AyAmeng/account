@@ -24,10 +24,10 @@ module.exports = webpackMerge(commonConfig, {
   module: {
     // loaders
     rules: [
-      {
-        test: /\.css$/, 
-        use: ExtractTextPlugin.extract({ fallback:  'style-loader', use: 'css-loader'})
-      },
+      // {
+      //   test: /\.css$/, 
+      //   use: ExtractTextPlugin.extract({ fallback:  'style-loader', use: 'css-loader'})
+      // },
       {
         test: /\.html$/,
         use: ["html-loader"],
@@ -44,11 +44,6 @@ module.exports = webpackMerge(commonConfig, {
   plugins: [
     //new webpack.BannerPlugin('This file is created by vya'),// top content
     new webpack.NoEmitOnErrorsPlugin(), //no error
-    //css
-    new ExtractTextPlugin({
-      filename: '[name].[chunkhash].css',
-      allChunks: true
-    }),
     // home page
     new HtmlWebpackPlugin({
       template: './src/index.html'
