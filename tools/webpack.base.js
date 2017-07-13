@@ -1,3 +1,5 @@
+'use strict'
+
 var webpack = require('webpack')
 const os = require('os')
 const path = require('path')
@@ -32,7 +34,7 @@ module.exports = {
     path: path.join(process.cwd(), 'dist'),
     //publicPath: '/dist/', //用于生产的
     //filename: 'bundle.js',
-    filename: '../dist/static/[name].[chunkhash].js',
+    filename: '[name].[chunkhash].js',
     //filename: 'bundle.js',
     //chunkFilename: '[name].chunk.js',
   },
@@ -53,14 +55,14 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.BannerPlugin('This file is created by vya'),
+    //new webpack.BannerPlugin('This file is created by vya'),
     // new ExtractTextPlugin('[name].css', {allChunks: true}), 
 
     // 单独打包CSS 参数为 new ExtractTextPlugin({filename: string | pathString, allChunks: boolean, }）
-    new ExtractTextPlugin({
-      filename: '../dist/static/[name].[chunkhash].css',
-      allChunks: true
-    }),
+    // new ExtractTextPlugin({
+    //   filename: '[name].[chunkhash].css',
+    //   allChunks: true
+    // }),
 
     // 打包指定的html文件到指定文件夹  new HtmlWebpackPlugin({filename: pathString , template: pathString, hash: boolean, minify: {}})
     // new HtmlWebpackPlugin({

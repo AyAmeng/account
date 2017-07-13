@@ -13,7 +13,7 @@ const views        = require('koa-views')
 // const pageRouter = require('./routers/index.js').page
 const router = require('./routers/index.js')
 // 设置views根rootpath
-app.use(views(__dirname + '/views', {
+app.use(views(__dirname + './views', {
   // map: {
   //   // html: 'underscore'
   // }
@@ -31,5 +31,5 @@ app.on("error",(err,ctx)=> {
   console.log('error', err)
 }),
 app.listen(3000, ()=> {
-  console.info('server is running at port 3000')
+  console.info('server is running at port 3000 http://localhost:3000')
 })

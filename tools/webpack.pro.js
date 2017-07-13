@@ -1,3 +1,5 @@
+'use strict'
+
 var webpack = require('webpack')
 const os = require('os')
 const path = require('path')

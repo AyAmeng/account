@@ -1,2 +1,6 @@
+# web
 node_modules
 dist/*
+# server
+server/node_modules
+server/dist/*

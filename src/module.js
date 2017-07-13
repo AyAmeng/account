@@ -1,1 +1,1 @@
-module.exports = 'It works from module'
+module.exports = 'it works from module'
