@@ -29,7 +29,7 @@ module.exports = {
     //vendor: ['vue', 'vue-route'],
   },
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.join(process.cwd(), 'dist'),
     //publicPath: '/dist/', //用于生产的
     //filename: 'bundle.js',
     filename: '../dist/static/[name].[chunkhash].js',
@@ -63,16 +63,16 @@ module.exports = {
     }),
 
     // 打包指定的html文件到指定文件夹  new HtmlWebpackPlugin({filename: pathString , template: pathString, hash: boolean, minify: {}})
-    new HtmlWebpackPlugin({
-      filename: '../dist/index.html',
-      template: './src/index.html',
-      hash: true,
-      // minify: {
-      //   removeComments: true,
-      //   collapseWhitespace: true,
-      //   removeAttributeQuotes: true
-      // }
-    }),
+    // new HtmlWebpackPlugin({
+    //   filename: './dist/index.html',
+    //   template: './src/index.html',
+    //   //hash: true,
+    //   // minify: {
+    //   //   removeComments: true,
+    //   //   collapseWhitespace: true,
+    //   //   removeAttributeQuotes: true
+    //   // }
+    // }),
   ]
 }
   /**

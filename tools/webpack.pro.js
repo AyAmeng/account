@@ -29,7 +29,7 @@ module.exports = {
     //filename: 'bundle.js',
     filename: '../dist/static/[name].[chunkhash].js',
     //filename: 'bundle.js',
-    //chunkFilename: '[name].chunk.js',
+    //chunkFilename: '[name].chunk.js',w
   },
   module: {
     // loaders

@@ -1,5 +1,6 @@
+'use strict'
+
 var webpack = require('webpack')
-const os = require('os')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -17,7 +18,7 @@ module.exports = webpackMerge(commonConfig, {
       'Access-Control-Allow-Origin': 'http://localhost',
       'Access-Control-Allow-Credentials': 'true'
     },
-    port: 8081,
+    port: 9527,
     // hot: true // 需要的时候请手动开启， 包括下面的 Plugin
   },
   
@@ -27,10 +28,10 @@ module.exports = webpackMerge(commonConfig, {
     //vendor: ['vue', 'vue-route'],
   },
   output: {
-    path: path.resolve(__dirname, '../dist'),
-    publicPath: '/dist/', //用于生产的
+    // path: path.resolve(__dirname, '../dist'),
+    path: path.join(process.cwd(), 'dist'),
     //filename: 'bundle.js',
-    filename: '[name].chunk.js',
+    filename: '[name].[chunkhash].js',
     //filename: 'bundle.js',
     //chunkFilename: '[name].chunk.js',
   },
@@ -55,7 +56,7 @@ module.exports = webpackMerge(commonConfig, {
     new webpack.BannerPlugin('This file is created by vya'),// top content
     new webpack.NoEmitOnErrorsPlugin(), //no error
 
-    // home page
+    // // home page
     new HtmlWebpackPlugin({
       template: './src/index.html'
     })
