@@ -1,0 +1,26 @@
+.form-login-view {
+  padding-top: 40px;
+  .title {
+    font-size: 30px;
+    color: #808080
+  }
+  .form-field{
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .input {
+    margin: 20px 0;
+    height: 40px;
+    font-size: 16px;
+    line-height: 40px;
+  }
+  .button {
+    height: 40px;
+    text-align: center;
+    font-size: 16px;
+    color: black;
+    border-radius: 5px;
+  }
+}
