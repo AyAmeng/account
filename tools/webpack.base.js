@@ -17,13 +17,18 @@ const CONFIGURATION = process.env.CONFIG
 
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 
+function resolve (dir) {
+  return path.join(__dirname, '..', dir)
+}
+
 module.exports = {
   resolve: {
     extensions: ['.js', '.ts', '.vue', '.styl', '.css'],
     modules: [path.resolve('./node_modules')],
     alias: {
       'src': path.resolve('../src'),
-    }
+      'vue': 'vue/dist/vue.js'
+    },
   },
   
   entry: {
@@ -41,10 +46,6 @@ module.exports = {
   module: {
     // loaders
     rules: [
-      {
-        test: /\.html$/,
-        use: ['html-loader']
-      },
       {
         test: /\.js$/,
         loader: 'babel-loader',

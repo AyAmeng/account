@@ -29,6 +29,10 @@ module.exports = webpackMerge(commonConfig, {
         use: ExtractTextPlugin.extract({ fallback:  'style-loader', use: 'css-loader'})
       },
       {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
         test: /\.html$/,
         use: ["html-loader"],
         // 去除样板文件
@@ -50,9 +54,9 @@ module.exports = webpackMerge(commonConfig, {
       //title: 'Account'
     }),
 
-    new ExtractTextPlugin({
-      filename: '[name].[chunkhash].css',
-      allChunks: true
-    }),
+    // new ExtractTextPlugin({
+    //   filename: '[name].[chunkhash].css',
+    //   allChunks: true
+    // }),
   ]
 })

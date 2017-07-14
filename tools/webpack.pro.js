@@ -18,7 +18,7 @@ module.exports = webpackMerge(CommonConfig ,{
   },
   
   entry: {
-    main: './src/entry.js'
+    main: './src/index.js'
     //vendor: ['vue', 'vue-route'],
   },
   output: {
@@ -38,6 +38,10 @@ module.exports = webpackMerge(CommonConfig ,{
           fallback: 'style-loader',
           use: 'css-loader?minimize'
         }) 
+      },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
         test: /\.html$/,
