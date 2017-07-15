@@ -1,0 +1,13 @@
+{
+  "name": "next-react-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "MIT",
+  "author": "Wave",
+  "license": "MIT",
+  "dependencies": {
+    "next": "^2.4.7",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
+}
