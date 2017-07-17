@@ -1,13 +1,16 @@
 {
-  "name": "next-react-demo",
+  "name": "next-deom",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "MIT",
-  "author": "Wave",
   "license": "MIT",
   "dependencies": {
-    "next": "^2.4.7",
+    "next": "beta",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
+  },
+  "scripts": {
+    "dev": "next",
+    "start": "next start",
+    "build": "next build"
   }
 }
